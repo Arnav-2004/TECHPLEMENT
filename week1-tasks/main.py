@@ -65,6 +65,15 @@ def update_contact(contacts, contact_id, new_name, new_phone, new_email):
             return
     console.print(f"\n[yellow]Contact with ID {contact_id} not found.[/yellow]\n")
 
+def delete_contact(contacts, contact_id):
+    for contact in contacts:
+        if contact["id"] == contact_id:
+            contacts.remove(contact)
+            save_contacts(contacts)
+            console.print(f"\n[green]Contact with ID {contact_id} deleted successfully.[/green]\n")
+            return
+    console.print(f"\n[yellow]Contact with ID {contact_id} not found.[/yellow]\n")
+
 def main():
     contacts = load_contacts()
 
@@ -73,7 +82,8 @@ def main():
         console.print("[cyan]2.[/cyan] Add Contact")
         console.print("[cyan]3.[/cyan] Search Contact")
         console.print("[cyan]4.[/cyan] Update Contact")
-        console.print("[cyan]5.[/cyan] Exit")
+        console.print("[cyan]5.[/cyan] Delete Contact")
+        console.print("[cyan]6.[/cyan] Exit")
 
         choice = console.input("[bold magenta]Enter your choice (1-5): [/bold magenta]")
 
@@ -95,6 +105,9 @@ def main():
             new_email = console.input("[bold]Enter new email address:[/bold] ")
             update_contact(contacts, contact_id, new_name, new_phone, new_email)
         elif choice == '5':
+            contact_id = int(console.input("\n[bold]Enter contact ID to delete:[/bold] "))
+            delete_contact(contacts, contact_id)
+        elif choice == '6':
             console.print("\n[bold green]Exiting Contact Management System. Goodbye![/bold green]")
             break
         else:
