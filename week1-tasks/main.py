@@ -18,10 +18,10 @@ def load_contacts():
 
 def display_contacts(contacts):
     if not contacts:
-        console.print("[yellow]No contacts found.[/yellow]")
+        console.print("\n[yellow]No contacts found.[/yellow]\n")
         return
 
-    table = Table(title="Contacts")
+    table = Table(title="\n[cyan]Contacts[/cyan]")
     table.add_column("ID", style="cyan")
     table.add_column("Name", style="magenta")
     table.add_column("Phone", style="green")
@@ -36,6 +36,7 @@ def display_contacts(contacts):
         )
 
     console.print(table)
+    print()
 
 def add_contact(contacts, name, phone, email):
     contact_id = len(contacts) + 1
@@ -47,7 +48,7 @@ def add_contact(contacts, name, phone, email):
     }
     contacts.append(new_contact)
     save_contacts(contacts)
-    console.print(f"[green]Contact added successfully. ID: {contact_id}[/green]")
+    console.print(f"\n[green]Contact added successfully. ID: {contact_id}[/green]\n")
 
 def search_contact(contacts, search_term):
     results = [contact for contact in contacts if search_term.lower() in contact["name"].lower()]
@@ -60,9 +61,9 @@ def update_contact(contacts, contact_id, new_name, new_phone, new_email):
             contact["phone"] = new_phone
             contact["email"] = new_email
             save_contacts(contacts)
-            console.print(f"[green]Contact with ID {contact_id} updated successfully.[/green]")
+            console.print(f"\n[green]Contact with ID {contact_id} updated successfully.[/green]\n")
             return
-    console.print(f"[yellow]Contact with ID {contact_id} not found.[/yellow]")
+    console.print(f"\n[yellow]Contact with ID {contact_id} not found.[/yellow]\n")
 
 def main():
     contacts = load_contacts()
@@ -79,25 +80,25 @@ def main():
         if choice == '1':
             display_contacts(contacts)
         elif choice == '2':
-            name = console.input("[bold]Enter name:[/bold] ")
+            name = console.input("\n[bold]Enter name:[/bold] ")
             phone = console.input("[bold]Enter phone number:[/bold] ")
             email = console.input("[bold]Enter email address:[/bold] ")
             add_contact(contacts, name, phone, email)
         elif choice == '3':
-            search_term = console.input("[bold]Enter name to search:[/bold] ")
+            search_term = console.input("\n[bold]Enter name to search:[/bold] ")
             search_results = search_contact(contacts, search_term)
             display_contacts(search_results)
         elif choice == '4':
-            contact_id = int(console.input("[bold]Enter contact ID to update:[/bold] "))
+            contact_id = int(console.input("\n[bold]Enter contact ID to update:[/bold] "))
             new_name = console.input("[bold]Enter new name:[/bold] ")
             new_phone = console.input("[bold]Enter new phone number:[/bold] ")
             new_email = console.input("[bold]Enter new email address:[/bold] ")
             update_contact(contacts, contact_id, new_name, new_phone, new_email)
         elif choice == '5':
-            console.print("[bold green]Exiting Contact Management System. Goodbye![/bold green]")
+            console.print("\n[bold green]Exiting Contact Management System. Goodbye![/bold green]")
             break
         else:
-            console.print("[bold red]Invalid choice. Please enter a number between 1 and 5.[/bold red]")
+            console.print("\n[bold red]Invalid choice. Please enter a number between 1 and 5.[/bold red]\n")
 
 
 if __name__ == "__main__":
