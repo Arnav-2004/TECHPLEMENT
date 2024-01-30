@@ -111,7 +111,7 @@ def main():
             console.print("\n[bold green]Exiting Contact Management System. Goodbye![/bold green]")
             break
         else:
-            console.print("\n[bold red]Invalid choice. Please enter a number between 1 and 5.[/bold red]\n")
+            console.print("\n[bold red]Invalid choice. Please enter a number between 1 and 6.[/bold red]\n")
 
 
 if __name__ == "__main__":
